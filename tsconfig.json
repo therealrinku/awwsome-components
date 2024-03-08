@@ -1,17 +1,32 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Node 20",
-  "_version": "20.1.0",
-
+  "ts-node": {
+    "transpileOnly": true,
+    "compilerOptions": {
+      "module": "ESNext",
+      "esModuleInterop": true
+    },
+    "esm": true // <--- this is the most important part
+  },
   "compilerOptions": {
-    "lib": ["es2023"],
-    "module": "node16",
-    "target": "es2022",
-
-    "strict": true,
-    "esModuleInterop": true,
+    "target": "es6",
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node16"
-  }
+    "lib": ["ES6", "dom"],
+    "rootDir": ".",
+    "allowImportingTsExtensions": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "strict": true,
+    "declaration": false,
+    "sourceMap": true,
+    "inlineSources": true,
+    "types": ["node"],
+    "stripInternal": true,
+    "incremental": true,
+    "skipDefaultLibCheck": true,
+    "inlineSourceMap": false,
+    "noEmit": false
+  },
+  "include": ["./**/*"],
+  "exclude": ["node_modules"]
 }

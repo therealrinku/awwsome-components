@@ -1,4 +1,4 @@
-import { FB } from "./core/fb";
+import { FB } from "./core/fb.ts";
 
 const fbInstance = new FB();
 

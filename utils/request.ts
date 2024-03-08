@@ -2,7 +2,7 @@
   Socials.js @2024
 */
 
-import { constants } from "./constants";
+import { constants } from "./constants.ts";
 
 /*
   TODO: Make everything typesafe and 

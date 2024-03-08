@@ -12,7 +12,7 @@
   remove @ts-expect-error and @ts-ignore
 */
 
-import { handleChannelApiCall } from "../utils/request";
+import { handleChannelApiCall } from "../utils/request.ts";
 
 export class FB {
   constructor() {}
@@ -148,7 +148,6 @@ export class FB {
       apiVersion: this.graphApiVersion,
     });
 
-    // @ts-expect-error
     const longLivedAccessToken = (await response.json())?.access_token;
 
     if (!longLivedAccessToken) {
@@ -183,12 +182,10 @@ export class FB {
        that means there are not any pages or user haven't provided access to any pages yet
     */
 
-    //@ts-expect-error
     if (responseJson.data?.length === 0) {
       throw new Error("You don't have any pages or you haven't provided enough permissions.");
     }
 
-    //@ts-expect-error
     const pages = responseJson.data;
     return pages;
   }
