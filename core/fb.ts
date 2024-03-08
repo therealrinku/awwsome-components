@@ -1,7 +1,7 @@
 /*
   Socials.js @2024
 
-  FB Graph API SDK
+  FB Graph API
   - long lived access token docs: https://developers.facebook.com/docs/facebook-login/guides/access-tokens/get-long-lived/
   - post docs: https://developers.facebook.com/docs/pages-api/posts/
   - insight docs: https://developers.facebook.com/docs/platforminsights/page
@@ -124,8 +124,12 @@ export class FB {
     //@ts-expect-error
     const { fbAppId, fbAppSecret } = this;
 
-    if (!shortLivedAccessToken || !fbAppId || !fbAppSecret) {
-      throw new Error("Not enough info provided to fetch long lived access token.");
+    if (!fbAppId || !fbAppSecret) {
+      throw new Error("fbAppId and fbAppSecret not found. Make sure to set it using setFbAppId and setFbAppSecret.");
+    }
+
+    if (!shortLivedAccessToken) {
+      throw new Error("Short lived access token not provided.");
     }
 
     const response = await handleChannelApiCall({
