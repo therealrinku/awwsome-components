@@ -1,3 +1,7 @@
+/*
+  Socials.js @2024
+*/
+
 import { constants } from "./constants";
 
 interface HandleChannelApiCallType {

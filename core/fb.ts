@@ -1,4 +1,6 @@
 /*
+  Socials.js @2024
+  
   FB Graph API SDK
   - long lived access token docs: https://developers.facebook.com/docs/facebook-login/guides/access-tokens/get-long-lived/
   - post docs: https://developers.facebook.com/docs/pages-api/posts/
