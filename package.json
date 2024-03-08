@@ -1,0 +1,15 @@
+{
+  "name": "socials.js",
+  "version": "0.0.11",
+  "description": "easily communicate with various social media api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/therealrinku/socials.js"
+  },
+  "author": "Rinku Chaudhari",
+  "license": "MIT"
+}
