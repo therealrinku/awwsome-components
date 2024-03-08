@@ -4,6 +4,11 @@
 
 import { constants } from "./constants";
 
+/*
+  TODO: Make everything typesafe and 
+  remove @ts-expect-error and @ts-ignore
+*/
+
 interface HandleChannelApiCallType {
   /*
     default method is get
@@ -30,6 +35,7 @@ export async function handleChannelApiCall({
   queryParamString = "",
   apiVersion = "",
 }: HandleChannelApiCallType) {
+  // @ts-expect-error
   const baseUrl = channelEndpointMap[channel] + apiVersion ? `/${apiVersion}` : "";
 
   if (!baseUrl) {
@@ -46,10 +52,12 @@ export async function handleChannelApiCall({
   };
 
   if (body) {
+    // @ts-expect-error
     requestOptions["body"] = JSON.stringify(body);
   }
 
   if (bearerToken) {
+    // @ts-expect-error
     requestOptions.headers["Authorization"] = `Bearer ${bearerToken}`;
   }
 

@@ -11,5 +11,8 @@
     "url": "https://github.com/therealrinku/socials.js"
   },
   "author": "Rinku Chaudhari",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.25"
+  }
 }

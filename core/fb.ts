@@ -7,6 +7,11 @@
   - insight docs: https://developers.facebook.com/docs/platforminsights/page
 */
 
+/*
+  TODO: Make everything typesafe and 
+  remove @ts-expect-error and @ts-ignore
+*/
+
 import { handleChannelApiCall } from "../utils/request";
 
 export class FB {
@@ -61,7 +66,7 @@ export class FB {
       apiVersion: this.graphApiVersion,
     });
 
-    const resp = await response.json();
+    const resp: any = await response.json();
 
     if (!resp.id) {
       throw new Error("Something went wrong while publishing the post.");
@@ -143,6 +148,7 @@ export class FB {
       apiVersion: this.graphApiVersion,
     });
 
+    // @ts-expect-error
     const longLivedAccessToken = (await response.json())?.access_token;
 
     if (!longLivedAccessToken) {
@@ -176,10 +182,13 @@ export class FB {
     /* if data length is 0
        that means there are not any pages or user haven't provided access to any pages yet
     */
+
+    //@ts-expect-error
     if (responseJson.data?.length === 0) {
       throw new Error("You don't have any pages or you haven't provided enough permissions.");
     }
 
+    //@ts-expect-error
     const pages = responseJson.data;
     return pages;
   }
