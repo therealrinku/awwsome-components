@@ -1,3 +1,5 @@
 import { FB } from "./core/fb";
 
-export { FB };
+const fbInstance = new FB();
+
+export { fbInstance as FB };
