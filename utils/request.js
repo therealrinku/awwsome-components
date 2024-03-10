@@ -18,7 +18,7 @@ async function handleChannelApiCall({
   apiVersion = "",
 }) {
   // @ts-expect-error
-  const baseUrl = channelEndpointMap[channel] + apiVersion ? `/${apiVersion}` : "";
+  const baseUrl = `${channelEndpointMap[channel]}/${apiVersion || constants.defaultFbGraphApiVersion}`;
 
   if (!baseUrl) {
     throw new Error("Unsupported Channel");
