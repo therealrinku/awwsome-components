@@ -7,14 +7,9 @@
   - insight docs: https://developers.facebook.com/docs/platforminsights/page
 */
 
-/*
-  TODO: Make everything typesafe and 
-  remove @ts-expect-error and @ts-ignore
-*/
+const { handleChannelApiCall } = require("../utils/request.js");
 
-import { handleChannelApiCall } from "../utils/request.ts";
-
-export class FB {
+class FB {
   constructor() {}
 
   /**
@@ -22,7 +17,7 @@ export class FB {
    * @param graphApiVersion version of graph api for eg: v18.0, v19.0
    * @default default value is v19.0
    */
-  setFbGraphApiVersion(graphApiVersion: string) {
+  setFbGraphApiVersion(graphApiVersion) {
     //@ts-expect-error
     this.graphApiVersion = graphApiVersion;
   }
@@ -31,7 +26,7 @@ export class FB {
    * Sets the fb app id
    * @param fbAppId app id from meta developers dashboard
    */
-  setFbAppId(fbAppId: string) {
+  setFbAppId(fbAppId) {
     //@ts-expect-error
     this.fbAppId = fbAppId;
   }
@@ -40,7 +35,7 @@ export class FB {
    * Sets the fb app secret
    * @param fbAppSecret app secret from meta developers dashboard
    */
-  setFbAppSecret(fbAppSecret: string) {
+  setFbAppSecret(fbAppSecret) {
     //@ts-expect-error
     this.fbAppSecret = fbAppSecret;
   }
@@ -51,7 +46,7 @@ export class FB {
    * @param pageAccessToken  long lived access token of the page
    * @returns id of the created post
    */
-  async createPost(pageId: string, body: string, pageAccessToken: string) {
+  async createPost(pageId, body, pageAccessToken) {
     if (!pageId || !body || !pageAccessToken) {
       throw new Error("Not enough info to create post");
     }
@@ -66,7 +61,7 @@ export class FB {
       apiVersion: this.graphApiVersion,
     });
 
-    const resp: any = await response.json();
+    const resp = await response.json();
 
     if (!resp.id) {
       throw new Error("Something went wrong while publishing the post.");
@@ -81,7 +76,7 @@ export class FB {
    * @param pageAccessToken long lived access token of the page
    * @returns 24 latest posts of the specified page
    */
-  async getPagePosts(pageId: string, pageAccessToken: string) {
+  async getPagePosts(pageId, pageAccessToken) {
     if (!pageId || !pageAccessToken) {
       throw new Error("Not enough info to get page posts");
     }
@@ -103,7 +98,7 @@ export class FB {
    * @param shortLivedAccessToken access token retrieved from fb dialog modal
    * @returns user's name and id, custom fields coming soon
    */
-  async getMe(shortLivedAccessToken: string) {
+  async getMe(shortLivedAccessToken) {
     if (!shortLivedAccessToken) {
       throw new Error("Invalid access token");
     }
@@ -125,7 +120,7 @@ export class FB {
    * @param shortLivedAccessToken access token retrieved from fb dialog modal
    * @returns user's long lived access token
    */
-  async getUserLongLivedAccessToken(shortLivedAccessToken: string) {
+  async getUserLongLivedAccessToken(shortLivedAccessToken) {
     //@ts-expect-error
     const { fbAppId, fbAppSecret } = this;
 
@@ -163,7 +158,7 @@ export class FB {
    * @param appScopedUserId app id from the developers meta dashboard
    * @returns first page information(id, name, long lived access tokens etc.) that it found or error if not
    */
-  async getFirstPage(userLongLivedAccessToken: string, appScopedUserId: string) {
+  async getFirstPage(userLongLivedAccessToken, appScopedUserId) {
     if (!userLongLivedAccessToken || !appScopedUserId) {
       throw new Error("Not enough data provided");
     }
@@ -196,7 +191,7 @@ export class FB {
    * @param pageLongLivedAccessToken long lived access token of the page
    * @returns insights of page posts engagement of last 30 days
    */
-  async getPageInsights(pageId: string, pageLongLivedAccessToken: string) {
+  async getPageInsights(pageId, pageLongLivedAccessToken) {
     if (!pageId || !pageLongLivedAccessToken) {
       throw new Error("Not enough data provided");
     }
@@ -212,3 +207,5 @@ export class FB {
     return await response.json();
   }
 }
+
+module.exports = { FB };

@@ -2,31 +2,13 @@
   Socials.js @2024
 */
 
-import { constants } from "./constants.ts";
-
-/*
-  TODO: Make everything typesafe and 
-  remove @ts-expect-error and @ts-ignore
-*/
-
-interface HandleChannelApiCallType {
-  /*
-    default method is get
-  */
-  method?: string;
-  endpoint: string;
-  channel: string;
-  body?: string;
-  queryParamString?: string;
-  bearerToken?: string;
-  apiVersion: string;
-}
+const { constants } = require("./constants");
 
 const channelEndpointMap = {
   facebook: constants.fbGraphApiBaseUrl,
 };
 
-export async function handleChannelApiCall({
+async function handleChannelApiCall({
   method = "get",
   endpoint,
   channel,
@@ -34,7 +16,7 @@ export async function handleChannelApiCall({
   body,
   queryParamString = "",
   apiVersion = "",
-}: HandleChannelApiCallType) {
+}) {
   // @ts-expect-error
   const baseUrl = channelEndpointMap[channel] + apiVersion ? `/${apiVersion}` : "";
 
@@ -64,3 +46,5 @@ export async function handleChannelApiCall({
   const response = await fetch(url, requestOptions);
   return response;
 }
+
+module.exports = { handleChannelApiCall };
