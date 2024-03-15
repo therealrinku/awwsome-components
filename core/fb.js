@@ -43,11 +43,11 @@ class FB {
   /**
    * Create a Post
    * @param pageId id of the page
-   * @param body body of the post see - https://developers.facebook.com/docs/pages-api/posts/
    * @param pageAccessToken  long lived access token of the page
+   * @param body body of the post see - https://developers.facebook.com/docs/pages-api/posts/
    * @returns id of the created post
    */
-  async createPost(pageId, body, pageAccessToken) {
+  async createPost(pageId, pageAccessToken, body) {
     if (!pageId || !body || !pageAccessToken) {
       throw new Error("Not enough info to create post");
     }
