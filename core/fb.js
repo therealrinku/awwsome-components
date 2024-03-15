@@ -159,7 +159,7 @@ class FB {
    * @param appScopedUserId app id from the developers meta dashboard
    * @returns first page information(id, name, long lived access tokens etc.) that it found or error if not
    */
-  async getFirstPage(userLongLivedAccessToken, appScopedUserId) {
+  async getAllPages(userLongLivedAccessToken, appScopedUserId) {
     if (!userLongLivedAccessToken || !appScopedUserId) {
       throw new Error("Not enough data provided");
     }
