@@ -1,6 +1,6 @@
 {
   "name": "socials.js",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "easily communicate with various social media api",
   "main": "index.js",
   "scripts": {

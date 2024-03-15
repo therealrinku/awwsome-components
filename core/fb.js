@@ -7,12 +7,16 @@
   - insight docs: https://developers.facebook.com/docs/platforminsights/page
 */
 
-const { constants } = require("../utils/constants");
-
-//Move this later to seperate file, 
+//Move this later to seperate file,
 //for some reason vercel deployment throws module not found "../utils/request"
 //when I had this on utils/request.js file :(
 //==================================================
+
+const constants = {
+  fbGraphApiBaseUrl: `https://graph.facebook.com`,
+  defaultFbGraphApiVersion: "v19.0",
+};
+
 const channelEndpointMap = {
   facebook: constants.fbGraphApiBaseUrl,
 };
