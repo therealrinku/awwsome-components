@@ -43,6 +43,7 @@ class FB {
   /**
    * Create a Post
    * @param pageId id of the page
+   * @param body body of the post see - https://developers.facebook.com/docs/pages-api/posts/
    * @param pageAccessToken  long lived access token of the page
    * @returns id of the created post
    */
