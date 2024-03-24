@@ -41,6 +41,39 @@ class FB {
   }
 
   /**
+   * Create a Image Post
+   * @param pageId id of the page
+   * @param pageAccessToken  long lived access token of the page
+   * @param imageUrl imageUrl of the post see - https://developers.facebook.com/docs/pages-api/posts/
+   * @returns id of the created post
+   */
+  async createImagePost(pageId, pageAccessToken, imageUrl) {
+    if (!pageId || !imageUrl || !pageAccessToken) {
+      throw new Error("Not enough info to create image post");
+    }
+
+    const response = await handleChannelApiCall({
+      endpoint: `${pageId}/photos`,
+      bearerToken: pageAccessToken,
+      channel: "facebook",
+      method: "post",
+      body: {
+        url: imageUrl,
+      },
+      //@ts-expect-error
+      apiVersion: this.graphApiVersion,
+    });
+
+    const resp = await response.json();
+
+    if (!resp.post_id) {
+      throw new Error("Something went wrong while publishing the post.");
+    }
+
+    return resp.post_id;
+  }
+
+  /**
    * Create a Post
    * @param pageId id of the page
    * @param pageAccessToken  long lived access token of the page
