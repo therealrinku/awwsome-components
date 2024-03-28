@@ -13,7 +13,7 @@
 
 ## About The Project
 
-Socials.js provides you an easy to use APIs to interact with various social media APIs like fb graph api, instagram api, twitter api and many more.
+Socials.js provides you an easy to use APIs to interact with various social media APIs like FB graph API, Instagram api, X api and more coming soon
 currently fb graph api is supported but support for other social medias coming soon.
 
 
